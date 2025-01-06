@@ -1,5 +1,6 @@
 import React from "react";
-const Cart = ({ cartItems }) => {
+
+const Cart = ({ cartItems, removeFromCart }) => {
   const getTotal = () =>
     cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -14,6 +15,7 @@ const Cart = ({ cartItems }) => {
             {cartItems.map((item) => (
               <li key={item.id}>
                 {item.title} - ${item.price} x {item.quantity}
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
               </li>
             ))}
           </ul>
@@ -23,6 +25,7 @@ const Cart = ({ cartItems }) => {
     </div>
   );
 };
+
 
 export default Cart;
 
